@@ -3,13 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Gpanel extends JPanel implements ActionListener {
-    static final int SCREEN_WIDTH = 600;
-    static final int SCREEN_HEIGHT = 600;
+    static final int SCREEN_WIDTH = 1000;
+    static final int SCREEN_HEIGHT = 500;
     static final int PADDLE_HEIGHT = 100;
-    static final int PADDLE_WIDTH = 30;
-    static final int BALL_SIZE = 10;
+    static final int PADDLE_WIDTH = 20;
+    static final int BALL_SIZE = 15;
     static final int UNIT_SIZE = 25;
-    static final int DELAY = 25;
+    static final int DELAY = 40;
     static final int GAME_UNITS = (SCREEN_HEIGHT * SCREEN_WIDTH) / UNIT_SIZE;
     public static boolean running = true;
     int score = 0;
@@ -48,11 +48,23 @@ public class Gpanel extends JPanel implements ActionListener {
         }
     }
 
+    public void reset() {
+        ball.reset();
+        paddle.reset();
+        paddle1.reset();
+    }
+
     public void collisions() {
         if (ball.x < 0) {
             score("p1");
+            reset();
+            // System.out.println(score);
+            // System.out.println(score1);
         } else if (ball.x > SCREEN_WIDTH) {
             score("p2");
+            // System.out.println(score);
+            // System.out.println(score1);
+            reset();
         } else if (ball.y < 0) {
             ball.bounce1();
         } else if (ball.y > SCREEN_HEIGHT) {
@@ -63,8 +75,8 @@ public class Gpanel extends JPanel implements ActionListener {
                 ball.bounce(paddle);
             }
         }
-        if (ball.y + BALL_SIZE > paddle1.x & ball.y + BALL_SIZE < paddle1.x + PADDLE_HEIGHT) {
-            if (ball.x + BALL_SIZE > paddle.x & ball.x + BALL_SIZE < paddle.x + PADDLE_WIDTH) {
+        if (ball.y + BALL_SIZE > paddle1.y & ball.y + BALL_SIZE < paddle1.y + PADDLE_HEIGHT) {
+            if (ball.x + BALL_SIZE > paddle1.x & ball.x + BALL_SIZE < paddle1.x + PADDLE_WIDTH) {
                 ball.bounce(paddle1);
             }
         }
@@ -82,8 +94,8 @@ public class Gpanel extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (running) {
-            paddle.move(0);
-            paddle1.move(0);
+            // paddle.move(0);
+            // paddle1.move(0);
             ball.move();
             collisions();
         }
@@ -93,10 +105,11 @@ public class Gpanel extends JPanel implements ActionListener {
     public class MyKeyAdapter extends KeyAdapter {
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_UP) {
-                paddle.move(e.getKeyCode());
-            } else {
                 paddle1.move(e.getKeyCode());
+            } else {
+                paddle.move(e.getKeyCode());
             }
         }
+
     }
 }

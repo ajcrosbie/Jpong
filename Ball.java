@@ -1,14 +1,18 @@
 public class Ball {
     int x;
     int y;
+    int ix;
+    int iy;
     int dir;
     int dir1; // dir is vertical movement dir1 is lateral movement
 
     Ball(int screenW, int screenH) {
         x = screenW / 2;
         y = screenH / 2;
-        dir = 1;
-        dir = 0;
+        ix = x;
+        iy = y;
+        dir = 5;
+        dir1 = 0;
     }
 
     public void move() {
@@ -23,5 +27,12 @@ public class Ball {
 
     public void bounce1() {
         dir1 = dir1 * -1;
+    }
+
+    public void reset() {
+        dir = 5;
+        dir1 = 0;
+        x = ix;
+        y = iy;
     }
 }
