@@ -1,6 +1,5 @@
-import javax.swing.*;
+package pac;
 
-import java.awt.*;
 import java.awt.event.*;
 
 public class Paddle {
@@ -20,23 +19,23 @@ public class Paddle {
 
     public void move(int di) {
         switch (di) {
-            case KeyEvent.VK_DOWN:
-                y = y + 8;
-                dir = 8;
-                break;
-            case KeyEvent.VK_UP:
-                y = y - 8;
-                dir = -8;
-                break;
-            case KeyEvent.VK_W:
-                y = y - 8;
-                dir = -8;
-                break;
-            case KeyEvent.VK_S:
-                y = y + 8;
-                dir = 8;
-            case 0:
-                dir = 0;
+        case KeyEvent.VK_DOWN:
+            y = y + 8;
+            dir = 8;
+            break;
+        case KeyEvent.VK_UP:
+            y = y - 8;
+            dir = -8;
+            break;
+        case KeyEvent.VK_W:
+            y = y - 8;
+            dir = -8;
+            break;
+        case KeyEvent.VK_S:
+            y = y + 8;
+            dir = 8;
+        case 0:
+            dir = 0;
         }
     }
 

@@ -1,3 +1,7 @@
+package pac;
+
+import pac.Paddle;
+import pac.Ball;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,11 +23,12 @@ public class Gpanel extends JPanel implements ActionListener {
     Ball ball;
     Timer timer;
 
-    Gpanel() {
+    public Gpanel() {
         this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
         this.setBackground(Color.black);
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
+        start();
     }
 
     public void start() {

@@ -1,3 +1,7 @@
+package pac;
+
+import pac.Paddle;
+
 public class Ball {
     int x;
     int y;
