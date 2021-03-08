@@ -115,6 +115,5 @@ public class Gpanel extends JPanel implements ActionListener {
                 paddle.move(e.getKeyCode());
             }
         }
-
     }
 }
